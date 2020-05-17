@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { getDetails } from "../../helpers/api";
 import { poster } from "../../utils/ImgApi";
+import imageNotFound from "../../helpers/ImgNotFound/default-profile.gif.png";
 import {
   useParams,
   useHistory,
@@ -77,7 +78,12 @@ const MoviesDetails = () => {
           <Button onClick={goBack}>go back</Button>
 
           <Container>
-            <Poster src={`${poster}${poster_path}`} alt={original_title} />
+            <Poster
+              src={!poster_path ? imageNotFound : `${poster}${poster_path}`}
+              alt={original_title}
+              width={400}
+              height={600}
+            />
 
             <Section>
               <Title>{`${original_title} (${year})`}</Title>
@@ -100,7 +106,7 @@ const MoviesDetails = () => {
                 <Item>
                   <NavLink
                     to={{
-                      pathname: `${url}/cast`,
+                      pathname: `${url}${MOVIE_CAST}`,
                       state: {
                         from: location.state.from,
                       },
@@ -113,7 +119,7 @@ const MoviesDetails = () => {
                 <Item>
                   <NavLink
                     to={{
-                      pathname: `${url}/reviews`,
+                      pathname: `${url}${MOVIE_REVIEWS}`,
                       state: {
                         from: location.state.from,
                       },

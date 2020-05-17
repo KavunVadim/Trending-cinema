@@ -22,7 +22,8 @@ export const Button = styled.button`
   }
 `;
 export const Poster = styled.img`
-  width: 400px;
+  display: block;
+  max-width: 400px;
   height: auto;
   margin: 0 20px 20px 0;
 `;
