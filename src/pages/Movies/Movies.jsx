@@ -64,15 +64,15 @@ const Movies = () => {
       {!error && loader && <Spinner />}
       {!error && !loader && (
         <List>
-          {searchMovies.map((el) => (
-            <Item key={el.id}>
+          {searchMovies.map(({ id, title }) => (
+            <Item key={id}>
               <Link
                 to={{
-                  pathname: `${MOVIES}/${el.id}`,
+                  pathname: `${MOVIES}/${id}`,
                   state: { from: location },
                 }}
               >
-                {el.title}
+                {title}
               </Link>
             </Item>
           ))}
