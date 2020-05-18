@@ -28,15 +28,15 @@ const Home = () => {
           <Title>Trending today</Title>
           <List>
             {movies &&
-              movies.map((el) => (
-                <Item key={el.id}>
+              movies.map(({ id, title }) => (
+                <Item key={id}>
                   <Link
                     to={{
-                      pathname: `${MOVIES}/${el.id}`,
+                      pathname: `${MOVIES}/${id}`,
                       state: { from: location },
                     }}
                   >
-                    {el.title}
+                    {title}
                   </Link>
                 </Item>
               ))}

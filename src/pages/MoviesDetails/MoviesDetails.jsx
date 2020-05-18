@@ -1,7 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { getDetails } from "../../helpers/api";
 import { poster } from "../../utils/ImgApi";
-import imageNotFound from "../../helpers/ImgNotFound/default-profile.gif.png";
 import {
   useParams,
   useHistory,
@@ -26,6 +24,8 @@ import {
   Article,
 } from "./MoviesDetails.styles";
 
+import { getDetails } from "../../helpers/api";
+import notImage from "../../helpers/ImgNotFound/default-profile.gif.png";
 import Error from "../../Components/ErrorMessage/ErrorMessage";
 import Spinner from "../../Components/Spinner/Spinner";
 import routers from "../../utils/routers";
@@ -51,6 +51,16 @@ const MoviesDetails = () => {
     history.push("/");
   };
 
+  const imageNotFound = () => {
+    if (!poster_path && !belongs_to_collection) {
+      return notImage;
+    } else if (!poster_path) {
+      return poster + belongs_to_collection.poster_path;
+    } else {
+      return poster + poster_path;
+    }
+  };
+
   useEffect(() => {
     getDetails(movieId)
       .then((response) => setMoviesDetail({ ...response.data }))
@@ -64,6 +74,7 @@ const MoviesDetails = () => {
     overview,
     genres,
     release_date,
+    belongs_to_collection,
   } = moviesDetail;
 
   const year = String(release_date).slice(0, -6);
@@ -79,7 +90,7 @@ const MoviesDetails = () => {
 
           <Container>
             <Poster
-              src={!poster_path ? imageNotFound : `${poster}${poster_path}`}
+              src={imageNotFound()}
               alt={original_title}
               width={400}
               height={600}
@@ -91,9 +102,10 @@ const MoviesDetails = () => {
               <Subtitle>Overview</Subtitle>
               <Text>{overview}</Text>
               <Subtitle>Genres</Subtitle>
+
               <ListGenres>
-                {genres.map((el) => (
-                  <Item key={el.id}>{el.name}</Item>
+                {genres.map(({ id, name }) => (
+                  <Item key={id}>{name}</Item>
                 ))}
               </ListGenres>
             </Section>

@@ -21,10 +21,10 @@ const Reviews = () => {
       {error && <ErrorMessage />}
       {!error &&
         !!reviews.length &&
-        reviews.map((el) => (
-          <Item key={el.id}>
-            <Title>Author: {el.author}</Title>
-            <Text>{el.content}</Text>
+        reviews.map(({ id, author, content }) => (
+          <Item key={id}>
+            <Title>Author: {author}</Title>
+            <Text>{content}</Text>
           </Item>
         ))}
       {!error && !!reviews.length < 1 && (

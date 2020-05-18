@@ -56,6 +56,9 @@ export const Item = styled.li`
     :hover {
       color: #ff8c00;
     }
+    &.active {
+      color: #ff8c00;
+    }
   }
 `;
 export const ListGenres = styled.ul`

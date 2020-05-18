@@ -21,16 +21,14 @@ const Cast = () => {
     <List>
       {error && <ErrorMessage />}
       {!error &&
-        cast.map((el) => (
-          <Item key={el.id}>
+        cast.map(({ id, profile_path, name, character }) => (
+          <Item key={id}>
             <Photo
-              src={
-                el.profile_path ? `${castImg}${el.profile_path}` : imgNotFound
-              }
-              alt={el.name}
+              src={profile_path ? `${castImg}${profile_path}` : imgNotFound}
+              alt={name}
             />
-            <Name>{el.name}</Name>
-            <Text>Character:{el.character}</Text>
+            <Name>{name}</Name>
+            <Text>Character:{character}</Text>
           </Item>
         ))}
     </List>
