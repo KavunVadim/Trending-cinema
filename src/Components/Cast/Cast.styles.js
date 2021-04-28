@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 export const List = styled.ul`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center; 
   flex-wrap: wrap;
   list-style: none;
-  margin: 0;
-  padding: 0;
 `;
 
 export const Item = styled.li`
-  width: 200px;
+  
   padding: 10px;
 `;
 
 export const Photo = styled.img`
   width: 100%;
-  height: 300px;
+  height: auto;
 `;
 export const Text = styled.p`
   margin: 10px 0 0;

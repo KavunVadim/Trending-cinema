@@ -89,12 +89,7 @@ const MoviesDetails = () => {
           <Button onClick={goBack}>go back</Button>
 
           <Container>
-            <Poster
-              src={imageNotFound()}
-              alt={original_title}
-              width={400}
-              height={600}
-            />
+            <Poster src={imageNotFound()} alt={original_title} />
 
             <Section>
               <Title>{`${original_title} (${year})`}</Title>
@@ -111,38 +106,36 @@ const MoviesDetails = () => {
             </Section>
           </Container>
 
-          <Container>
-            <Article>
-              <Subtitle>Additional information</Subtitle>
-              <List>
-                <Item>
-                  <NavLink
-                    to={{
-                      pathname: `${url}${MOVIE_CAST}`,
-                      state: {
-                        from: location.state.from,
-                      },
-                    }}
-                  >
-                    Cast
-                  </NavLink>
-                </Item>
+          <Article>
+            <Subtitle>Additional information</Subtitle>
+            <List>
+              <Item>
+                <NavLink
+                  to={{
+                    pathname: `${url}${MOVIE_CAST}`,
+                    state: {
+                      from: location.state.from,
+                    },
+                  }}
+                >
+                  Cast
+                </NavLink>
+              </Item>
 
-                <Item>
-                  <NavLink
-                    to={{
-                      pathname: `${url}${MOVIE_REVIEWS}`,
-                      state: {
-                        from: location.state.from,
-                      },
-                    }}
-                  >
-                    Reviews
-                  </NavLink>
-                </Item>
-              </List>
-            </Article>
-          </Container>
+              <Item>
+                <NavLink
+                  to={{
+                    pathname: `${url}${MOVIE_REVIEWS}`,
+                    state: {
+                      from: location.state.from,
+                    },
+                  }}
+                >
+                  Reviews
+                </NavLink>
+              </Item>
+            </List>
+          </Article>
         </>
       )}
       <Suspense fallback={<Spinner />}>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Form = styled.form`
   margin: 20px;
   box-shadow: -1px 12px 10px -10px rgba(0, 0, 0, 0.75);
-
   display: inline-block;
 `;
 

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px minmax(700px,1fr);
+  gap: 20px;
 `;
 
 export const Wrapper = styled.div`
@@ -22,10 +24,9 @@ export const Button = styled.button`
   }
 `;
 export const Poster = styled.img`
-  display: block;
-  max-width: 400px;
+  width: 300px;
   height: auto;
-  margin: 0 20px 20px 0;
+  margin: 0 0 20px;
 `;
 
 export const Title = styled.h1`
@@ -69,18 +70,11 @@ export const ListGenres = styled.ul`
 `;
 
 export const Article = styled.div`
-  ::after {
-    content: "";
-    display: block;
-    width: calc(100vw * 2);
-    height: 2px;
-    background: black;
-  }
+  ::after,
   ::before {
     content: "";
     display: block;
-    width: calc(100vw * 2);
     height: 2px;
-    background: #000;
+    background: linear-gradient(to right, black, transparent);
   }
 `;
